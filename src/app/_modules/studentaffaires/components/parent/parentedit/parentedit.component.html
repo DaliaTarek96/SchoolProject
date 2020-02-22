@@ -1,0 +1,28 @@
+<div class="card" style="padding: 5px;">
+    <ul class="list-group list-group-flush">
+        <!-- <label class="h3">ID</label>
+        <li class="list-group-item"> <input type="number" [(ngModel)]="EditParent._id" class="form-control" disabled>
+        </li> -->
+        <label class="h3">Name</label>
+        <li class="list-group-item"> <input type="text" [(ngModel)]="EditParent.name" class="form-control">
+        </li>
+        <label class="h3">User Name</label>
+        <li class="list-group-item"> <input type="text" [(ngModel)]="EditParent.userName" class="form-control">
+        </li>
+        <label class="h3">Password</label>
+        <li class="list-group-item"> <input type="number" [(ngModel)]="EditParent.password" class="form-control">
+        </li>
+        <label class="h3">NationalId</label>
+        <li class="list-group-item"> <input type="number" [(ngModel)]="EditParent.nationalId" class="form-control">
+        </li>
+        <label class="h3">Address</label>
+        <li class="list-group-item"> <input type="text" [(ngModel)]="EditParent.Address" class="form-control">
+        </li>
+        <label class="h3">Phone</label>
+        <li class="list-group-item"> <input type="text" [(ngModel)]="EditParent.phoneNumber" class="form-control">
+        </li>
+        
+    </ul>
+    <input type="submit" (click)="savaEdit()" class="btn btn-success btn-block" value="Edit">
+
+</div>

@@ -1,0 +1,23 @@
+<div class="container w-25 p-5">
+    <p class="h2 text-center">Add New Class</p>
+<form [formGroup]='addSubject' (ngSubmit)='save()'>
+    <label>Class ID :  </label>
+    <input class="form-control" type="number" formControlName="Id">
+    <span class="text-danger" *ngIf="id.errors?.required&&id.touched">ID is required ..</span>
+    <br/>
+    <label>Class Number :  </label>
+    <input class="form-control" type="text" formControlName="Name">
+    <span class="text-danger" *ngIf="name.errors?.required&&name.touched">Name is required ..</span>
+    <span class="text-danger" *ngIf="(name.errors?.pattern||name.value.split('/')[1]==0)&&name.touched">Class Must be in this Form (1-6)  / (1-9) ..</span>
+   
+    <br/>
+    <label>Student Number :  </label>
+    <input class="form-control" type="number" formControlName="StdNO">
+    <span class="text-danger" *ngIf="StdNO.errors?.required&&StdNO.touched">Name is required ..</span>
+    <span class="text-danger" *ngIf="(StdNO.errors?.min||StdNO.errors?.max)&&StdNO.touched">Student Number Must be between 20 to 35 ..</span>
+   
+    <br/>
+    <p class="h4 text-center text-danger" *ngIf='errormsg!=""'>{{errormsg}}</p>
+    <input type="submit" class="btn btn-outline-dark" style="margin-left: 40%;" [disabled]='valid' value="Add">
+</form>
+</div>

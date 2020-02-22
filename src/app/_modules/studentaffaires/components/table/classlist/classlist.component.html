@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="text-center">All Classes</h1>
+<button class="btn btn-outline-dark m-2" routerLink='/studentAffaires/Student/Subject/Add'>Add New Class</button>
+
+<div class="form-group">
+    <label class="form-control w-25">Select Year :</label>
+    <select class="form-control w-50" #d (change)='sa(d.value)'>
+        <option *ngFor='let year of Years' [value]=year>{{year}}</option>
+    </select>
+</div>
+<table class="table   text-center table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Class Number</th>
+            <th>Number Of Students</th>
+            <th> Subject</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+        <tbody *ngFor="let sub of subjects">
+            <tr *ngIf='selectYear==sub.ClassNo.split("/")[0] || selectYear=="AllYear"'>
+                <td >{{sub._id}}</td>
+                <td >{{sub.ClassNo}}</td>
+                <td >{{sub.StudentNo}}</td>
+                <td ><span *ngFor="let details of sub.Subject">{{details.Subject}}<br /></span></td>
+                <td >
+                    <button class="btn btn-outline-dark m-2"
+                        [routerLink]='["/studentAffaires/Student/Subject/Edit",sub._id]'>Edit</button>
+                    <button class="btn btn-outline-dark m-2" 
+                    [routerLink]='["/studentAffaires/Student/Subject/Table",sub._id]'>ADD Table</button>
+                    
+
+                    <button class="btn btn-danger m-2" (click)='deleteClass(sub._id)'>Delete</button>
+
+                </td>
+            </tr>
+        </tbody>  
+</table>
+</div>

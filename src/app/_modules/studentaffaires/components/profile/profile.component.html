@@ -1,0 +1,27 @@
+<div class="image container-fluid" style="padding: 0;"  [style.width.px]="myInnerWidth">
+    <div class="overlay text-center">
+        <div class="container back">
+          <div class="row text-white p-5">
+    <div class="col-6">
+              <p class="h5 p-4">Full Name</p>
+              <p class="h5 p-4">NationalID</p>
+              <p class="h5 p-4">Salary</p>
+              <p class="h5 p-4">Address</p>
+              <p class="h5 p-4">Phone Number</p>
+              <p class="h5 p-4">Data Of Birth</p>
+              <p class="h5 p-4">Date Of Start Job</p>
+  
+            </div>
+            <div class="col-6">
+                <p class="h5 p-4">{{employe.FullName}}</p>
+              <p class="h5 p-4">{{employe.NationalID}}</p>
+              <p class="h5 p-4">{{employe.Salary}}</p>
+              <p class="h5 p-4">{{employe.Address}}</p>
+              <p class="h5 p-4">{{employe.PhoneNumber}}</p>
+              <p class="h5 p-4">{{employe.DOB|date :'dd/MM/yyyy'}}</p>
+              <p class="h5 p-4">{{employe.DOJ|date :'dd/MM/yyyy'}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+   </div>

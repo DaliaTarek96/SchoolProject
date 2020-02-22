@@ -1,0 +1,12 @@
+<div class="image container-fluid" style="padding: 0;"  [style.width.px]="myInnerWidth">
+    <div class="overlay text-center">
+        <div class="container back">
+          <table class="h5 text-white ">
+            <tr  *ngFor='let h of header ; let i=index;' ><td  class="p-5">{{h}} : </td>
+              <td>{{employe[i]}}</td>
+              </tr>
+          </table>
+          
+        </div>
+    </div>
+   </div>
