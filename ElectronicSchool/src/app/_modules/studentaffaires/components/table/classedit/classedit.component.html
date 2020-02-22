@@ -1,0 +1,20 @@
+<div class="container w-25 p-5">
+    <p class="h2 text-center">Edit Class</p>
+<form [formGroup]='editSubject' (ngSubmit)='save()'>
+    <label>Class Number :  </label>
+    
+    <input class="form-control" type="text" formControlName="Name" [value]='subject.ClassNo'>
+    <span class="text-danger" *ngIf="name.errors?.required&&name.touched">Name is required ..</span>
+    <span class="text-danger" *ngIf="name.errors?.pattern&&name.touched">Class Must be in this Form (1-6)  / (1-9) ..</span>
+   
+    <br/>
+    <label>Student Number :  </label>
+    <input class="form-control" type="Number" formControlName="StdNO" [value]='subject.StudentNo'>
+    <span class="text-danger" *ngIf="StdNO.errors?.required&&name.touched">Name is required ..</span>  
+    <span class="text-danger" *ngIf="(StdNO.errors?.min||StdNO.errors?.max)&&StdNO.touched">Student Number Must be between 20 to 35 ..</span>
+   
+    <br/>
+
+    <input type="submit" class="btn btn-outline-dark " style="margin-left: 40%;" [disabled]='valid' value="Edit">
+</form>
+</div>

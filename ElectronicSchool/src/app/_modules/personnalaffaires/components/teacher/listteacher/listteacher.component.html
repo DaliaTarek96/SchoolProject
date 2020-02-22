@@ -1,0 +1,67 @@
+<input type="text" [(ngModel)]="serachWord" style="width:400px; 
+margin:20px;" placeholder="Search" class="form-control" > 
+
+
+
+<div ng-if="false; else r;"></div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">fullname</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Edit Teacher</th>
+
+      <th scope="col">Delete</th>
+
+      <th scope="col">View </th>
+
+    </tr>
+  </thead>
+  <tbody  *ngFor="let teacher of techersList; let i=index">
+    <!-- <ng-template *ngFor="let teacher of techersList; let i=index" #r>   -->
+    
+   
+   <tr *ngIf="serachWord=='' || teacher.fullName.includes(serachWord)">
+      <td> {{teacher._id}} </td>
+      <td>{{teacher.fullName}}</td>
+      <td>>{{teacher.Address}}</td>
+
+
+      <td>
+
+
+        {{teacher.phoneNumber}}
+      </td>
+      <td>
+
+        <select (change)="navigateTo(mySelect.value,teacher._id)" #mySelect>
+          <option selected>edit teacher</option>
+          <option *ngFor="let arr of arr" [value]="arr"> {{arr}}</option>
+
+
+        </select>
+
+
+      </td>
+
+
+
+      <td>
+
+
+        <button (click)="deleteTeacher(teacher._id)" class="btn  btn-outline-danger">Delete</button>
+
+
+      </td>
+      <td>
+        <a [routerLink]="['/personalAffaires/Employee/Details',teacher._id]" class="btn  btn-outline-dark">View</a>
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table> 
