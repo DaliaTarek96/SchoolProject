@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-   innerHeight =window.innerHeight-150;
    items=[{name:'Add Degrees',link:'/control/mainPage/showDegrees'},
    {name:'Announce Degrees',link:'/control/mainPage/announceDegrees'}
       ,{name:'My Profile',link:'/control/mainPage/MyProfile'},

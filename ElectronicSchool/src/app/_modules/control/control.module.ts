@@ -10,13 +10,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { UpdatedegreesComponent } from './components/degrees/updatedegrees/updatedegrees.component';
 import { DegreeannounceComponent } from './components/degrees/degreeannounce/degreeannounce.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [MainComponent, HomeComponent, AdddegreeComponent, ProfileComponent, MainNavComponent, UpdatedegreesComponent, DegreeannounceComponent],
   imports: [
     CommonModule,
-    ControlRoutingModule, ReactiveFormsModule,FormsModule
-  ]
+    ControlRoutingModule, ReactiveFormsModule,FormsModule,
+    SharedModule.forRoot()
+  ],
 })
 export class ControlModule { }

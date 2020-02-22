@@ -21,12 +21,14 @@ import { AddteacherComponent } from './components/teacher/addteacher/addteacher.
 import { ListteacherComponent } from './components/teacher/listteacher/listteacher.component';
 import { EditsalaryComponent } from './components/teacher/editsalary/editsalary.component';
 import { TeacherdetailsComponent } from './components/teacher/teacherdetails/teacherdetails.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [HomeComponent, EmployeelistComponent,TeacherdetailsComponent, EmployeeaddComponent, MainnavbarComponent, EmployeeeditComponent, MainComponent, ProfileComponent, EditteacherComponent, AddteacherComponent, ListteacherComponent, EditsalaryComponent],
   imports: [
     CommonModule,
+    SharedModule.forRoot(),
     PersonnalaffairesRoutingModule,
     ReactiveFormsModule,FormsModule,NgMultiSelectDropDownModule,
 //     MatDialogModule,

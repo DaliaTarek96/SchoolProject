@@ -8,7 +8,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {MainNavComponent} from './components/main-nav/main-nav.component';
 import {UpdatedegreesComponent} from './components/degrees/updatedegrees/updatedegrees.component';
 import {DegreeannounceComponent} from './components/degrees/degreeannounce/degreeannounce.component'
-const routes: Routes = [
+const myroutes: Routes = [
   {path:'',component:MainComponent,children:[
     {path:'mainPage',component:MainNavComponent,children:[
       {path:'showDegrees',component:AdddegreeComponent},
@@ -22,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(myroutes)],
   exports: [RouterModule]
 })
 export class ControlRoutingModule { }
