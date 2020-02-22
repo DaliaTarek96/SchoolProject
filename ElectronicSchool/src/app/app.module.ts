@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/Header/header/header.component';
 import { MiddleheaderComponent } from './components/Header/middleheader/middleheader.component';
 import { HomeComponent } from './components/Header/home/home.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { SharedModule } from './_modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,12 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    SharedModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+
+ }

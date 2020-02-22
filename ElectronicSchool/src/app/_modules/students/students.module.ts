@@ -9,6 +9,7 @@ import { MainnavComponent } from './components/mainnav/mainnav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DegreeComponent } from './components/degree/degree.component';
 import { TableComponent } from './components/table/table.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TableComponent } from './components/table/table.component';
   imports: [
     CommonModule,
     StudentsRoutingModule,FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule.forRoot()
   ]
 })
 export class StudentsModule { }

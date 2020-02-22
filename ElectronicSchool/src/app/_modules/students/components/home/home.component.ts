@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   myInnerHeight= window.innerHeight;
-  myInnerWidth= window.innerWidth-17;
   id:number;
 
   constructor( private activeroute:ActivatedRoute) { }
