@@ -48,24 +48,38 @@ sudentProRouter.route("/studentsPro")
             response.send({ err: err.errmsg });
         });
 
-    })
+    });
+
+
+
+     //delete student by send id as param
+     sudentProRouter.delete("/studentsPro/:id",(request,response)=>{
+        studentproSchema.deleteOne({_id:request.params.id}).then(data=>{
+            response.send(data);
+
+        }).catch(error=>{
+            response.send(error);
+
+        });
+
+    });
 
     /////////////////////////////
 
-    .delete((request, response) => {
+    // .delete((request, response) => {
 
-        studentproSchema.deleteOne({ _id: request.body.id })
+    //     studentproSchema.deleteOne({ _id: request.body.id })
 
-            .then((data) => {
-                response.send(data);
-                console.log("student deleted ...");
-            })
-            .catch((error) => {
-                response.send(error);
-                console.log("student not deleted ...");
-            });
+    //         .then((data) => {
+    //             response.send(data);
+    //             console.log("student deleted ...");
+    //         })
+    //         .catch((error) => {
+    //             response.send(error);
+    //             console.log("student not deleted ...");
+    //         });
 
-    });
+    // });
     // get one ...
     sudentProRouter.get("/studentsPro/:id",(request, response) => {
         studentproSchema.findOne({_id:request.params.id}).then((data) => {
