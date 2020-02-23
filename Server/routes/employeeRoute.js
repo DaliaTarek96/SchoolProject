@@ -17,7 +17,7 @@ employeeRoute.route('/employee')
             .post((request,response)=>{
               
                 let employeeObject =  new  employeeSchema({
-                    _id:request.body._id,
+                    // _id:request.body._id,
                     FullName:request.body.FullName,
                     NationalID:request.body.NationalID,
                     Password:request.body.Password,

@@ -8,6 +8,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {MainNavComponent} from './components/main-nav/main-nav.component';
 import {UpdatedegreesComponent} from './components/degrees/updatedegrees/updatedegrees.component';
 import {DegreeannounceComponent} from './components/degrees/degreeannounce/degreeannounce.component'
+
 const myroutes: Routes = [
   {path:'',component:MainComponent,children:[
     {path:'mainPage',component:MainNavComponent,children:[

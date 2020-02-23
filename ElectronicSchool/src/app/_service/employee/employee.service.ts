@@ -31,4 +31,12 @@ export class EmployeeService {
     }
     return this.http.delete<Employee>(this.URL,options);
   }
+
+
+
+  // add role 
+  updateRole(obj){
+    return this.http.put("http://localhost:8000/admin/addRole",obj)
+
+   }
 }
