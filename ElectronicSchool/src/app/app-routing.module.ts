@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'studentAffaires',loadChildren:()=>import('./_modules/studentaffaires/studentaffaires.module').then(m=>m.StudentaffairesModule)},
   {path:'personalAffaires' ,loadChildren:()=>import('./_modules/personnalaffaires/personnalaffaires.module').then(m=>m.PersonnalaffairesModule)},
   {path:'control',loadChildren:()=>import('./_modules/control/control.module').then(m=>m.ControlModule)},
+  {path:"admin",loadChildren:()=>import('./_modules/admin/admin.module').then(m=>m.AdminModule)},
   {path:'',component:HomeComponent}
 ];
 

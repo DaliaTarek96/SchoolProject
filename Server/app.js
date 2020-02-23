@@ -11,6 +11,8 @@ let express = require('express'),
     parentRouter = require('./routes/parentRouter'),
     teacherRouter = require('./routes/TeacherRouter'),
     loginRouter = require('./routes/LoginRouter');
+    ActivityRouter=require("./routes/activityRouter");
+    AdminRouter=require("./routes/AdminRouter");
 
 
 
@@ -44,6 +46,9 @@ app.use('/StudentAffaires',sudentProRouter);
 app.use('/StudentAffaires',parentRouter);
 app.use('/StudentAffaires',subjectRoute);
 app.use('/control',controlRoute);
+app.use("/admin",AdminRouter);
+app.use("/admin",ActivityRouter);
+
 
 app.use('/employeeAffaires',employeeRoute);
 app.use('/teachers',teacherRouter);
