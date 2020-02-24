@@ -16,7 +16,7 @@
             <label class="col-sm-3 col-form-label">Password : </label>
             <div class="col-sm-9"> <input class="form-control " type="string" formControlName="Password">
                 <span class="text-danger" *ngIf="Password.errors?.required&&Password.touched">Password is required ..</span>
-                <span class="text-danger" *ngIf="Password.errors?.minlength&&Password.touched">Password must be at least 5 letters ..</span>
+                <span class="text-danger" *ngIf="Password.errors?.minlength&&Password.touched">Password must be at least 8 letters ..</span>
 
             </div>
         </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <br />
-
-        <input type="submit" [disabled]='invalid' class="btn btn-info w-25" value="Add" style="background-color: #f7631b; margin-left: 250px ;">
+        <h4 *ngIf='isExist' class="text-center text-danger m-3">Sorry, this employee is exist ...</h4>
+        <input type="submit" [disabled]='!invalid()' class="btn btn-info w-25" value="Add" style="background-color: #f7631b; margin-left: 40% ;">
     </form>
 </div>

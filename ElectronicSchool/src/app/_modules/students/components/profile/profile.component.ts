@@ -26,9 +26,9 @@ export class ProfileComponent implements OnInit {
 // });
 
     // this.activeroute.params.subscribe(a => {
-this.loginServer.getUserId().subscribe(a=>{// to get current ID for Student
-      console.log(a);
-      this.stdser.getStudentData(a['Value']).subscribe(s => {
+      let ID = JSON.parse(localStorage.getItem('id'));// to get current ID for Student
+      
+      this.stdser.getStudentData(ID.id).subscribe(s => {
         // console.log(s);//student object
         this.student = s;
         console.log(s);
@@ -44,7 +44,7 @@ this.loginServer.getUserId().subscribe(a=>{// to get current ID for Student
     
       })
 
-    });
+   
 
     
     this.StudentProfile = new FormGroup({

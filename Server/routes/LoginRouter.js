@@ -75,21 +75,6 @@ loginRouter.post("/login", (request, response ) => {
 
 });
 
-// to save Id 
-loginRouter.route('/save').get((request,response)=>{
-    ID.findOne({_id:0}).then(data=>{
-        response.send(data);
-    }).catch(error=>console.log(error));
-})
-// .put((request,response)=>{
-//     let newId = new ID({
-//         Value:request.body.Value
-//     })
-//     newId.save().then(data=>{response.send(data)})})
-    .put((request,response)=>{
-    ID.updateOne({_id:0},{
-        $set:{Value:request.body.Value}
-    }).then(data=>{response.send(data)}).catch(err=>console.log(err))
-})
+
 
 module.exports = loginRouter;

@@ -22,8 +22,8 @@ export class DegreeComponent implements OnInit {
       this.state = state['state'];
     });
 
-    this.loginServer.getUserId().subscribe(a=>{// to get current ID for Student
-      this.stdser.getStudentData(a['Value']).subscribe(std => {// get student according to degree
+    let ID = JSON.parse(localStorage.getItem('id'));// to get current ID for Student
+      this.stdser.getStudentData(ID.id).subscribe(std => {// get student according to degree
         this.StudentName=std.FullName;
           this.classNo=std.Class;
          this.control.getAllStudent().subscribe(data=>{         
@@ -31,7 +31,7 @@ export class DegreeComponent implements OnInit {
             if(std.FullName==this.StudentName)this.degress=std.Degree;
           })
         });
-      })})
+      })
   }
 
 }

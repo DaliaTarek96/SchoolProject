@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./employeeadd.component.css']
 })
 export class EmployeeaddComponent implements OnInit {
-
+  isExist:boolean=false;
   addEmployee : FormGroup;
   newEmployee : Employee = new Employee('',0,'',0,'',0,null,null);
   constructor(private employeeService:EmployeeService,private router :Router) { }
@@ -46,16 +46,26 @@ export class EmployeeaddComponent implements OnInit {
   }
 
   save(){
+    this.isExist=false;
+    //check if employee exist or not
+    this.employeeService.getAllEmplyee().subscribe(emps=>{
+      emps.forEach(emp=>{
+        if(emp.NationalID==this.addEmployee.get('NationalID').value){this.isExist=true;}
+      });
+      if(!this.isExist){
 
-    this.employeeService.add(this.addEmployee.value).subscribe((data)=>{
-      this.router.navigate(['/personalAffaires/Employee/List']);
-    })
+        this.employeeService.add(this.addEmployee.value).subscribe((data)=>{
+          this.router.navigate(['/personalAffaires/Employee/List']);
+        })
+      }
+    });
+   
   }
   ngOnInit() {
     
     this.addEmployee=new FormGroup({
       'FullName' : new FormControl('',[Validators.required,Validators.minLength(16),Validators.maxLength(30)]),
-      'Password' : new FormControl('',[Validators.required,Validators.minLength(5)]),
+      'Password' : new FormControl('',[Validators.required,Validators.minLength(8)]),
       'NationalID' : new FormControl('',[Validators.required,Validators.min(10000000000000),Validators.max(99999999999999)]),
       'Salary' : new FormControl('',[Validators.required]),
       'Address' : new FormControl('',[Validators.required]),
