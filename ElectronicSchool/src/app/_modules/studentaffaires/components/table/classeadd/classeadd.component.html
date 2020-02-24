@@ -1,10 +1,6 @@
 <div class="container w-25 p-5">
     <p class="h2 text-center">Add New Class</p>
 <form [formGroup]='addSubject' (ngSubmit)='save()'>
-    <label>Class ID :  </label>
-    <input class="form-control" type="number" formControlName="Id">
-    <span class="text-danger" *ngIf="id.errors?.required&&id.touched">ID is required ..</span>
-    <br/>
     <label>Class Number :  </label>
     <input class="form-control" type="text" formControlName="Name">
     <span class="text-danger" *ngIf="name.errors?.required&&name.touched">Name is required ..</span>

@@ -18,8 +18,8 @@ export class TableComponent implements OnInit {
    constructor(private subject:SubjectService ,private loginServer:LoginService ,private stdser:StudentsService) { }
  
    ngOnInit() {
-    this.loginServer.getUserId().subscribe(a=>{// to get current ID for Student
-      this.stdser.getStudentData(a['Value']).subscribe(s => {
+    let ID = JSON.parse(localStorage.getItem('id'));// to get current ID for Student
+      this.stdser.getStudentData(ID.id).subscribe(s => {
         this.student = s;
         this.classNo = s.Class;
         this.subject.getAllClasses().subscribe(data=>{
@@ -29,7 +29,7 @@ export class TableComponent implements OnInit {
         })
     
        
-      })})
+      })
     
    }
  

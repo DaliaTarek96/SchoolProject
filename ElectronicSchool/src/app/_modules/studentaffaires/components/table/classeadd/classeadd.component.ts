@@ -25,9 +25,7 @@ export class ClasseaddComponent implements OnInit {
   get StdNO(){
     return this.addSubject.get('StdNO');
   }
-  get id(){
-    return this.addSubject.get('Id');
-  }
+
   get valid(){
     return this.addSubject.invalid || this.name.value.split('/')[1]==0
   }
@@ -49,7 +47,7 @@ saveSubject:any;
            }  });
       if(this.flag==false){
            this.subService.add(this.subject).subscribe((data)=>{
-          this.router.navigate(['/StudentAffaires/subject']);
+          this.router.navigate(['/studentAffaires/Student/Subject']);
         })
       }
     
@@ -60,7 +58,6 @@ saveSubject:any;
       'Name' : new FormControl('1/1',[Validators.required,
         // forbiddenNameValidator,
         Validators.pattern('(?=[1-6])(?=.*[/])(?=[1-9]).{3}')]),
-      'Id' : new FormControl(null,[Validators.required]),
       'StdNO' : new FormControl(null,[Validators.required , Validators.min(20),Validators.max(35)]),
 
     });

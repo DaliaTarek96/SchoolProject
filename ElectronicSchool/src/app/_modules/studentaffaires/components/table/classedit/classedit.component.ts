@@ -29,16 +29,19 @@ export class ClasseditComponent implements OnInit {
   save(){
     let sub = new Subject(this.subject._id,this.editSubject.get('Name').value,this.editSubject.get('StdNO').value,[]) 
     this.subService.update(sub).subscribe((data)=>{
-      this.router.navigate(['/StudentAffaires/subject']);
+      this.router.navigate(['/studentAffaires/Student/Subject']);
     })
   }
   ngOnInit() {
     this.aroute.params.subscribe(a=>{
-      this.subService.getOneClass(a.id).subscribe(data=>this.subject=data[0])
+      this.subService.getOneClass(a.id).subscribe(data=>{this.subject=data[0];
+      this.editSubject.setValue({'Name':data[0].ClassNo,'StdNO':data[0].StudentNo})
+        
+      })
     })
     this.editSubject=new FormGroup({
-      'Name' : new FormControl('',[Validators.required,Validators.pattern('(?=[1-6])(?=.*[/])(?=[1-9]).{3}')]),
-      'StdNO': new FormControl('',[Validators.required, Validators.min(20),Validators.max(35)]),
+      'Name' : new FormControl(null,[Validators.required,Validators.pattern('(?=[1-6])(?=.*[/])(?=[1-9]).{3}')]),
+      'StdNO': new FormControl(null,[Validators.required, Validators.min(20),Validators.max(35)]),
 
     });
   }

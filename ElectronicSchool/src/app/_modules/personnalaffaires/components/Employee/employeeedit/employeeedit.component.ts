@@ -42,12 +42,12 @@ export class EmployeeeditComponent implements OnInit {
   get Password(){
     return this.editEmployee.get('Password');
   }
-  get valid(){
-    return   this.editEmployee.pristine;
-  }
+//  valid(){
+//     console.log(this.valid())
+//     return   this.editEmployee.invalid;
+//   }
 
   save(){
-    
       if(this.editEmployee.valid){
         this.employeeService.update(this.editEmployee.value).subscribe((data)=>{
           this.router.navigate(['/personalAffaires/Employee/List']);
@@ -74,7 +74,7 @@ export class EmployeeeditComponent implements OnInit {
     });
     this.editEmployee=new FormGroup({
       'FullName' : new FormControl(null,[Validators.required,Validators.minLength(16),Validators.maxLength(30)]),
-      'Password' : new FormControl(null,[Validators.required,Validators.minLength(5),Validators.maxLength(30)]),
+      'Password' : new FormControl(null,[Validators.required,Validators.minLength(8),Validators.maxLength(30)]),
       'NationalID' : new FormControl(null,[Validators.required ,Validators.min(10000000000000),Validators.max(99999999999999)]),
       'Salary' : new FormControl(null,[Validators.required]),
       'Address' : new FormControl(null,[Validators.required]),

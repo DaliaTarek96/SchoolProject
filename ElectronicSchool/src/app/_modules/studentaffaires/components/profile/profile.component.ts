@@ -18,14 +18,14 @@ export class ProfileComponent implements OnInit {
   constructor(private employee:EmployeeService , private login:LoginService ,private DatePipe:DatePipe) { }
 
   ngOnInit() {
-    this.login.getUserId().subscribe(ID=>{
+    let ID = JSON.parse(localStorage.getItem('id'));// to get current ID for Student
     this.employee.getAllEmplyee().subscribe(data=>{
       data.forEach(emp=>{
        
-        if(emp['_id']==ID['Value'])this.employe=[emp.FullName,emp.NationalID,emp.Password,emp.Salary,emp.Address,emp.PhoneNumber,
+        if(emp['_id']==ID.id)this.employe=[emp.FullName,emp.NationalID,emp.Password,emp.Salary,emp.Address,emp.PhoneNumber,
           this.DatePipe.transform(emp.DOB,'dd/MM/yyy'),this.DatePipe.transform(emp.DOJ,'dd/MM/yyy')];
       })
-    })})
+    })
 
 }
 }

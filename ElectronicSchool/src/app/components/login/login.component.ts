@@ -50,9 +50,9 @@ get password(){
        console.log(a['_id']);
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else {
-         this.loginservice.setUserId(a['_id']).subscribe(a=>{
-          this.router.navigateByUrl("/Students");
-         })
+        localStorage.setItem('id',JSON.stringify({id:a['_id']}))
+        this.router.navigateByUrl("/Students");
+         
          }
      })
    }
@@ -61,10 +61,10 @@ get password(){
        console.log(a);
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else {
-        this.loginservice.setUserId(a['_id']).subscribe(a=>{
-          this.router.navigateByUrl("/studentsPro/profile/"+a['_id']);
+        localStorage.setItem('id',JSON.stringify({id:a['_id']}))
+        this.router.navigateByUrl("/studentsPro/profile/"+a['_id']);
 
-        })
+       
         } 
 
 
@@ -76,11 +76,9 @@ get password(){
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else
        {
-        this.loginservice.setUserId(a['_id']).subscribe(a=>{
-          this.router.navigateByUrl("/Parents");
+        localStorage.setItem('id',JSON.stringify({id:a['_id']}))
+        this.router.navigateByUrl("/Parents");
 
-
-        })
         } 
 
 
@@ -91,10 +89,9 @@ get password(){
        console.log(a);
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else{
-        this.loginservice.setUserId(a['_id']).subscribe(a=>{
+         localStorage.setItem('id',JSON.stringify({id:a['_id']}))
           this.router.navigateByUrl("/control");
 
-        })
         }  
        
 
@@ -106,10 +103,9 @@ get password(){
        console.log(a);
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else{
-        this.loginservice.setUserId(a['_id']).subscribe(a=>{
+         localStorage.setItem('id',JSON.stringify({id:a['_id']}))
           this.router.navigateByUrl("/studentAffaires");
 
-        })
         }  
       
 
@@ -121,11 +117,9 @@ get password(){
        console.log(a);
        if(a==null)this.errMsg='Password Or National ID Incorrect ...';
        else {
-        this.loginservice.setUserId(a['_id']).subscribe(a=>{
-          this.router.navigateByUrl("/personalAffaires");
+        localStorage.setItem('id',JSON.stringify({id:a['_id']}))
+        this.router.navigateByUrl("/personalAffaires");
 
-
-        })
         } 
 
 

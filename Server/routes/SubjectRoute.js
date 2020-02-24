@@ -16,9 +16,8 @@ SubjectRoute.route('/subject')
                         .catch((error)=>{response.send(error)});
             })
             .post((request,response)=>{
-                
                 let subjectObject =  new  studentSubjectSchema({
-                    _id:request.body._id,
+                    // _id:request.body._id,
                     ClassNo    :request.body.ClassNo,
                     StudentNo  :request.body.StudentNo,
                     Subject    :request.body.Subject,
