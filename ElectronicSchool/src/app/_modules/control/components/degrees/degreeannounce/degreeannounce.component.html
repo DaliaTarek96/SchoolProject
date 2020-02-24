@@ -1,0 +1,15 @@
+<table class="table table-hover table-striped text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Year</th>
+            <th> Announce or Not</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let year of Years; let i=index;'>
+            <td>{{year}}</td>
+            <td><button class="btn btn-outline-dark" (click)='change(i)'><span *ngIf='statee[i]'>Appear Result</span>
+                <span *ngIf='!statee[i]'>Disappear Result</span></button></td>
+        </tr>
+    </tbody>
+</table>

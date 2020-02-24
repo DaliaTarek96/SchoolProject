@@ -1,0 +1,39 @@
+<table class="table table-hover table-snipped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>FullName</th>
+            <th>NationalID</th>
+            <th>Password</th>
+            <th>Adress</th>
+            <th>PhoneNumber</th>
+            <th>Class</th>
+            <!-- <th>Degree</th> -->
+            <th>Operation</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{student._id}}</td>
+            <td>{{student.FullName}}</td>
+            <td>{{student.NationalID}}</td>
+            <td>{{student.Password}}</td>
+            <td>{{student.Adress}}</td>
+            <td>{{student.PhoneNumber}}</td>
+            <td>{{student.Class}}</td>
+            <!-- <td>{{student.Degree}}</td> -->
+            <td>
+                <button type="button" class="btn btn-outline-dark" routerLink="/studentsPro/details/{{student._id}}">Details</button>&nbsp;
+                <button type="button" class="btn btn-outline-dark" routerLink="/studentAffaires/Student/students/Studentedit/{{student._id}}">Edit</button>&nbsp;
+                <button type="button" class="btn btn-outline-danger" (click)="deleteStudent(student._id)">Delete</button>
+                <!-- <a class="btn btn-danger" routerLink="/student/details/{{item._id}}">Details</a> -->
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<router-outlet>
+
+</router-outlet>
