@@ -1,14 +1,22 @@
 const mongoose = require("mongoose");
 autoIncrement = require('mongoose-auto-increment');
 
-var connection = mongoose.createConnection("mongodb://localhost:27017/itiDBReact");
+var connection = mongoose.createConnection("mongodb://localhost:27017/schoolsystem");
  
 autoIncrement.initialize(connection);
 
  const newsSheama = mongoose.Schema({
-       img:String,
-       description:String,
-       title:String
+      _id: mongoose.Schema.Types.ObjectId,
+       img:{
+           
+           type:String
+          },
+       title:{
+            type:String
+          },
+       description:{
+            type:String
+          }
 })
 
 

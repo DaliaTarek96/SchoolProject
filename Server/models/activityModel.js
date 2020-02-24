@@ -1,18 +1,20 @@
-
-const mongoose = require("mongoose");
-
+const  mongoose = require("mongoose");
 autoIncrement = require('mongoose-auto-increment');
-var connection = mongoose.createConnection("mongodb://localhost:27017/itiDBReact");
-autoIncrement.initialize(connection);
+var connection = mongoose.createConnection("mongodb://localhost:27017/SchoolActivity");
 
+const ActivitySchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    img:{
+        
+        type:String
+       },
+    title:{
+         type:String
+       },
+    description:{
+         type:String
+       }
+})
 
-
-let activitySchema = mongoose.Schema({
-    img:String,
-    description:String,
-    title:String                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-});
-
-activitySchema.plugin(autoIncrement.plugin, 'schoolActivites');
-
-mongoose.model("schoolActivites",activitySchema)
+ActivitySchema.plugin(autoIncrement.plugin, 'SchoolLatestActivities');
+mongoose.model("achollActivites",ActivitySchema)

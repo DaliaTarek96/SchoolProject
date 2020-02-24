@@ -1,41 +1,94 @@
-
 let express = require("express")
-let mongoose  =require("mongoose")
+const mongoose  =require("mongoose")
 let activityRouter = express.Router();
-require("./../models/activityModel")
-let activityScheama = mongoose.model("schoolActivites")
+require("./../Models/activityModel");
+multer = require('multer')
+
+let activityScheama = mongoose.model("achollActivites")
 
 
-activityRouter.route("/activity")
-.get((request,response)=>{
-    console.log('hh')
-    activityScheama.find({}).then((activites)=>{
-        console.log('gff',activites)
-        response.send(activites)
+// Multer File upload settings
+const DIR = './public/upload/';
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname
+    cb(null, fileName)
+  }
+});
+
+// Multer Mime Type Validation
+var upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+    }
+  }
+}
+
+);
+/* ******* get all Activity ********** */
+activityRouter.get("/allActivity",(request,response)=>{
+    activityScheama.find({})
+            .then((allActivity)=>{
+                console.log(allActivity)
+                response.send(allActivity)
+            })
+            .catch((error)=>{
+                response.send(error)
+            })
+})
+ /************************************************* */
+// activityRouter.post("/addActivity",(request,response)=>{
+//     let activity = new activityScheama({
+//         img:request.body.img,
+//         title:request.body.title,
+//         description:request.body.description
+//               })
+//               activity.save().then((obj)=>{
+//                       response.send(obj)
+//               })
+//     })
+/***********************************Post Activity */
+    activityRouter.post("/addActivity",upload.single('img'),(request,response)=>{
+        const url = request.protocol +'://' + request.get('host')
+        console.log(request)
+        console.log(request.body,'nnnnnn')
+           let  news = new activityScheama({
+                img: url + '/public/upload/' + request.file.filename,
+                title:request.body.title,
+                description:request.body.description
+           })
+          news.save().then((news)=>{
+               console.log(news)
+             response.send(news)
+           }).catch((error )=>{
+                       response.send(error)
+           })
+    })
+/******************delete  Activity***************************** */ 
+activityRouter.delete("/deletActivity",(request,response)=>{
+    console.log(request.body)
+    activityScheama.deleteOne({_id:request.body.id}).then((data)=>{
+        response.send(data)
     }).catch((error)=>{
         response.send(error)
-
     })
-}).post((request,response)=>{
-        console.log(request.body);
-              let activity = new activityScheama({
-                  _id:request.body.id,
-                img:request.body.img,
-                  description:request.body.description,
-                  title:request.body.title,
-                  
-
-
-              })
-              activity.save().then((obj)=>{
-                      response.send(obj)
-              })
-    }).delete((request,response)=>{
-        activityScheama.deleteOne({_id:request.body.id}).then((data)=>{
-                 response.send(data)
-        })
-
-    })
-
-module.exports =activityRouter;
+})
+//  .delete((request,response)=>{
+//         activityScheama.deleteOne({_id:request.body.id}).then((data)=>{
+//                  response.send(data)
+//         })
+//     })
+/**************************************************** */
+module.exports =activityRouter
