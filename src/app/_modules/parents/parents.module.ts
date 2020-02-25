@@ -8,13 +8,15 @@ import { MainComponent } from './components/main/main.component';
 import { MainnavComponent } from './components/mainnav/mainnav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TableComponent } from './components/table/table.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [DegreeComponent, HomeComponent, MainComponent, MainnavComponent, ProfileComponent, TableComponent],
   imports: [
     CommonModule,
-    ParentsRoutingModule
+    ParentsRoutingModule,
+    SharedModule.forRoot()
   ]
 })
 export class ParentsModule { }

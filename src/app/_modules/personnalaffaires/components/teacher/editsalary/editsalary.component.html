@@ -8,5 +8,5 @@
     <div class="col">
       <input type="Number"  oninput = "this.value =Math.abs(this.value)"  name ="newSalary"[(ngModel)]="newTeacherSalary" class="form-control">
   </div>
-  <button class="btn btn-success" (click)="updateTeacherSalary(form.value)"> update Salary</button>
+  <button class="btn btn-success" [disabled]="inValid()" (click)="updateTeacherSalary(form.value)"> update Salary</button>
 </form>

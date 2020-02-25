@@ -17,13 +17,15 @@ import { ClasslistComponent } from './components/table/classlist/classlist.compo
 import { ClasseditComponent } from './components/table/classedit/classedit.component';
 import { ClasseaddComponent } from './components/table/classeadd/classeadd.component';
 import { TableComponent } from './components/table/table/table.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [ ParentaddComponent,TableComponent, ParentlistComponent, StudentlistComponent, StudentaddComponent, StudenteditComponent,HomeComponent, MainComponent, MainnavComponent, ProfileComponent, ParenteditComponent, ClasslistComponent, ClasseditComponent, ClasseaddComponent],
   imports: [
     CommonModule,
-    StudentaffairesRoutingModule,ReactiveFormsModule,FormsModule
+    StudentaffairesRoutingModule,ReactiveFormsModule,FormsModule,
+     SharedModule.forRoot()
   ]
 })
 export class StudentaffairesModule { }

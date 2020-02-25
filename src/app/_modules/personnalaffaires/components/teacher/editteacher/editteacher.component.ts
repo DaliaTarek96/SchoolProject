@@ -24,27 +24,44 @@ export class EditteacherComponent implements OnInit {
   ngOnInit() {
 
     this.addTeacherForm = new FormGroup({
-      fullName: new FormControl('',[Validators.required]),
-      Address: new FormControl('',[Validators.required]),
-      nationalId: new FormControl('',[Validators.required,Validators.maxLength(14)]),
-      password: new FormControl('',[Validators.required,Validators.minLength(6)]),
-      phoneNumber: new FormControl('',[Validators.required,Validators.minLength(11)]),
-      salary: new FormControl('',[Validators.required]),
+      // fullName: new FormControl('',[Validators.required]),
+      // Address: new FormControl('',[Validators.required]),
+      // nationalId: new FormControl('',[Validators.required,Validators.min(10000000000000),Validators.max(99999999999999)]),
+
+      // password: new FormControl('',[Validators.required,Validators.minLength(6)]),
+      // phoneNumber: new FormControl('',[Validators.required,Validators.minLength(11)]),
+      // salary: new FormControl('',[Validators.required]),
+      // subject: new FormControl('',[Validators.required]),
+      // classes: new FormControl('',[Validators.required]),
+      fullName: new FormControl('',[Validators.required,Validators.minLength(16)]),
+      Address: new FormControl('',[Validators.required,Validators.minLength(12)]),
+      nationalId: new FormControl('',[Validators.required,Validators.min(10000000000000),Validators.max(99999999999999)]),
+
+      password: new FormControl('',[Validators.required,Validators.minLength(8)]),
+      phoneNumber: new FormControl('',[Validators.required,Validators.min(10000000000),Validators.max(99999999999)]),
+
+      // phoneNumber: new FormControl('',[Validators.required,Validators.minLength(11)]),
       subject: new FormControl('',[Validators.required]),
-      classes: new FormControl('',[Validators.required]),
+     classes: new FormControl('',[Validators.required]),
+      // DOH:new FormControl('',[Validators.required]),
 
 
     })
     this.activeRouter.params.subscribe((activLink)=>{
-      console.log(activLink)
+      console.log(activLink.id)
             this.eacherService.getOneTeacher(activLink.id).subscribe((data)=>{
+             
               console.log(data)
               this.teacher= data
+              console.log(this.teacher);
+              console.log(data);
+
                this.dropdownList = data.subjects.classesName
                console.log(this.dropdownList)
+               this.selectedItems = data.subjects.classesName
+
             })
     })
-
 
 
     this.dropdownSettings = {
@@ -59,7 +76,8 @@ export class EditteacherComponent implements OnInit {
   }
   
   updateTeacher(){    
-    console.log(this.addTeacherForm)                                                                        
+    console.log(this.addTeacherForm)    
+    console.log(this.addTeacherForm.invalid)                                                                     
     this.eacherService.updateTeacherBasicInfo(this.teacher).subscribe((data)=>{
       console.log(data)
       // this.navRouter.navigate(["/TeacherList"]);
@@ -94,7 +112,17 @@ onSelectAll(items: any) {
   get phoneNumber(){
     return this.addTeacherForm.controls.phoneNumber;
   }
+  get subject(){
+    return this.addTeacherForm.controls.subject;
+  }
+  get classes(){
+    return this.addTeacherForm.controls.classes;
+  }
+  
 
+  inValid(){
+    return  this.addTeacherForm.invalid;
+    }
 
 }
 

@@ -24,14 +24,17 @@ export class AddteacherComponent implements OnInit {
   ngOnInit() {
     this.addTeacherForm = new FormGroup({
       fullName: new FormControl('',[Validators.required,Validators.minLength(16)]),
-      Address: new FormControl('',[Validators.required,Validators.minLength(16)]),
-      nationalId: new FormControl('',[Validators.required,Validators.minLength(14)]),
-      password: new FormControl('',[Validators.required,Validators.minLength(16)]),
-      phoneNumber: new FormControl('',[Validators.required,Validators.minLength(11)]),
+      Address: new FormControl('',[Validators.required,Validators.minLength(12)]),
+      nationalId: new FormControl('',[Validators.required,Validators.min(10000000000000),Validators.max(99999999999999)]),
+
+      password: new FormControl('',[Validators.required,Validators.minLength(8)]),
+      phoneNumber: new FormControl('',[Validators.required,Validators.min(10000000000),Validators.max(99999999999)]),
+
+      // phoneNumber: new FormControl('',[Validators.required,Validators.minLength(11)]),
       salary: new FormControl('',[Validators.required,]),
       subject: new FormControl('',[Validators.required]),
-     classes: new FormControl('',[Validators.required,Validators.min(0)]),
-      DOH:new FormControl(''),
+     classes: new FormControl('',[Validators.required]),
+      DOH:new FormControl('',[Validators.required]),
          
 
     })
@@ -133,15 +136,24 @@ export class AddteacherComponent implements OnInit {
     this.teacherObject =
      new Teachers(fullName,userName,password,Address,phoneNumber,nationalId,salary,subjects,DOH)
   console.log(this.teacherObject)
-  this.TecherserviceService.addTeacher(this.teacherObject).subscribe((data)=>{
-         console.log(data)
-         console.log(this.addTeacherForm)
-        this.navigateRouter.navigate(["/personalAffaires/Employee/Teacher"])
+  this.TecherserviceService.getCheckTeacher(this.addTeacherForm.value.nationalId).subscribe((emp)=>{
+    if(emp){
+      this.TecherserviceService.addTeacher(this.teacherObject).subscribe((data)=>{
+        console.log(data)
+        console.log(this.addTeacherForm)
+       this.navigateRouter.navigate(["/personalAffaires/Employee/Teacher"])
+ })
+    }else{
+      
+    }
   })
+  
 
   
   }
- 
+ inValid(){
+   return this.addTeacherForm.invalid;
+ }
 }
 
 

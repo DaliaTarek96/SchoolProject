@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeacherService } from 'src/app/_service/teacher/teacher.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
+import {FormGroup,FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-editsalary',
@@ -14,7 +15,9 @@ export class EditsalaryComponent implements OnInit {
   id:Number
     constructor(
   private teacherService:TeacherService,
-  private activatedRouter :ActivatedRoute
+  private activatedRouter :ActivatedRoute,
+  private navigatedRouter :Router
+
   
   
     ) { }
@@ -29,14 +32,24 @@ export class EditsalaryComponent implements OnInit {
       })
     }
     updateTeacherSalary(form){
+      console.log(this.newTeacherSalary)
       this.teacherService.updateTeacherSalary({id:this.id,salary:this.newTeacherSalary})
       .subscribe((data)=>{
         console.log(data)
+        // this.navigatedRouter.navigate(["/personalAffaires/Employee/Teacher"])
+        
+        
   
       })
       console.log(form)
   
   
     }
+     inValid(){
+
+    if(this.newTeacherSalary==0 ||this.newTeacherSalary==undefined ){
+      return true
+    }
+   }
   
   }

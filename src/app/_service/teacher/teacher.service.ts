@@ -24,6 +24,9 @@ updateTeacherBasicInfo(teacher){
   return this.http.put("http://localhost:8000/teachers/edit",teacher)
 
 }
+getCheckTeacher(nationalID){
+  return this.http.get("http://localhost:8000/checkEmployeeExist/"+nationalID)
+}
 updateTeacherSalary(teacher){
   console.log(teacher)
   return this.http.put("http://localhost:8000/teachers/editsalray",teacher)

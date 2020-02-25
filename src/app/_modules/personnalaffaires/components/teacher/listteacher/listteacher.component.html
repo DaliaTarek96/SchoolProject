@@ -35,7 +35,7 @@ margin:20px;" placeholder="Search" class="form-control" >
 
         {{teacher.phoneNumber}}
       </td>
-      <td>
+      <!-- <td>
 
         <select (change)="navigateTo(mySelect.value,teacher._id)" #mySelect>
           <option selected>edit teacher</option>
@@ -45,9 +45,20 @@ margin:20px;" placeholder="Search" class="form-control" >
         </select>
 
 
-      </td>
+      </td> -->
 
+<td>
 
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     Edit Employee 
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a [routerLink]="['/personalAffaires/Employee/TeacherEdit',teacher._id]" class="dropdown-item">Basic Info</a>
+  <a [routerLink]="['/personalAffaires/Employee/TeacherSalary',teacher._id]" class="dropdown-item" >Salary</a> 
+    </div>
+  </div>
+</td>
 
       <td>
 

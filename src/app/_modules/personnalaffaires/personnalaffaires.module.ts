@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
-// import {MatDialogModule} from '@angular/material/dialog';
-// import {MatButtonModule} from '@angular/material/button';
-// import {MatIconModule} from '@angular/material/icon';
-// import {MatTableModule} from '@angular/material/table'
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table'
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 
 import { PersonnalaffairesRoutingModule } from './personnalaffaires-routing.module';
@@ -21,19 +22,35 @@ import { AddteacherComponent } from './components/teacher/addteacher/addteacher.
 import { ListteacherComponent } from './components/teacher/listteacher/listteacher.component';
 import { EditsalaryComponent } from './components/teacher/editsalary/editsalary.component';
 import { TeacherdetailsComponent } from './components/teacher/teacherdetails/teacherdetails.component';
-
+import { SharedModule } from '../shared/shared.module';
+import { MatconfirmdialogComponent} from './components/matconfirmdialog/matconfirmdialog.component'
 
 @NgModule({
-  declarations: [HomeComponent, EmployeelistComponent,TeacherdetailsComponent, EmployeeaddComponent, MainnavbarComponent, EmployeeeditComponent, MainComponent, ProfileComponent, EditteacherComponent, AddteacherComponent, ListteacherComponent, EditsalaryComponent],
+  declarations: 
+  [HomeComponent,
+     EmployeelistComponent,
+     TeacherdetailsComponent,
+      EmployeeaddComponent, MainnavbarComponent,
+      
+      EmployeeeditComponent, MainComponent, 
+      ProfileComponent, EditteacherComponent,
+       AddteacherComponent, ListteacherComponent,
+        EditsalaryComponent,MatconfirmdialogComponent],
   imports: [
     CommonModule,
+    SharedModule.forRoot(),
     PersonnalaffairesRoutingModule,
     ReactiveFormsModule,FormsModule,NgMultiSelectDropDownModule,
-//     MatDialogModule,
-//     MatButtonModule,
-// MatIconModule, 
-// MatTableModule
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
+  //  BrowserAnimationsModule,
 
-  ]
+  ],
+  
+  // entryComponents: [
+  //   MatconfirmdialogComponent
+  // ],
+  
 })
 export class PersonnalaffairesModule { }

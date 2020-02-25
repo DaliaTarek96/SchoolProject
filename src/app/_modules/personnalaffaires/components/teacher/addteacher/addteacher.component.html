@@ -13,34 +13,38 @@
       </div>
       <div class="col">
         <input type="text" class="form-control mb-3" placeholder="Address"  formControlName="Address">
-        <!-- <span *ngIf="Address.errors?.required&&Address.touched" > Address is required</span> -->
-        <!-- <span *ngIf="Address.errors?.minlength&&Address.touched" > Address is 16 letter </span> -->
+        <span *ngIf="Address.errors?.required&&Address.touched" > Address is required</span> 
+ <span *ngIf="Address.errors?.minlength&&Address.touched" > Address is 16 letter </span>
   
       </div>
     </div>
     <div class="form-row">
         <div class="col">
-            <input type="Number" class="form-control" placeholder="NationalId" formControlName="nationalId">
+            <input type="number" class="form-control" placeholder="NationalId" formControlName="nationalId">
             <span *ngIf="nationalId.errors?.required&&nationalId.touched" > nationalId is required</span> 
-            <span *ngIf="nationalId.errors?.minlength&&nationalId.touched" > minlength is 16 letter </span>
+            <span *ngIf="nationalId.errors?.min&&nationalId.touched">national Number should be 14 </span>
+
+            <span *ngIf="nationalId.errors?.max&&nationalId.touched">national Number should be 14 </span>  
           </div>
       <div class="col">
         <input type="text" class="form-control mb-3" placeholder="password"  formControlName="password">
         <span *ngIf="password.errors?.required&&password.touched" > password is required</span>
-        <span *ngIf="password.errors?.minlength&&password.touched" > minlength is 16 letter </span>
-  
+        <span *ngIf="password.errors?.minlength&&password.touched" > Password is 8 letter </span>
+
       </div>
     </div>
     <div class="form-row">
       <div class="col">
-        <input type="text" class="form-control mb-3" placeholder="Phone Number" formControlName="phoneNumber">
+       
+        <input type="number" class="form-control mb-3" placeholder="Phone Number" formControlName="phoneNumber">
         <span *ngIf="phoneNumber.errors?.required&&phoneNumber.touched" > phoneNumber is required</span>
-        <span *ngIf="phoneNumber.errors?.minlength&&phoneNumber.touched" > minlength is 16 letter </span>
+
+        <span *ngIf="phoneNumber.errors?.min&&phoneNumber.touched">national Number should be 11 </span>
+        <span *ngIf="phoneNumber.errors?.max&&phoneNumber.touched">national Number should be 11 </span>
       </div>
       <div class="col">
           <input type="Number"  style="width: 250px;"  oninput = "this.value =Math.abs(this.value)" placeholder="Salary" class="form-control mb-3"   formControlName="salary">
           <span *ngIf="salary?.errors?.required&&salary.touched" > subject is required</span> 
-          <span *ngIf="salary?.errors?.min&&salary.touched" > subject is required</span> 
   
   
       </div>
@@ -49,7 +53,6 @@
       <div class="col">
           <input type="text"  placeholder="subject" class="form-control mb-3"   formControlName="subject">
           <span *ngIf="subject.errors?.required&&subject.touched" > subject is required</span> 
-        <span *ngIf="subject.errors?.minlength&&subject.touched" > minlength is 16 letter </span>
       </div>
       <div class="col hi" > 
          
@@ -73,12 +76,12 @@
         
         <div class="col">
             <input type="date"  style="width: 250px"  class="form-control"   formControlName="DOH">
-            <!-- <span *ngIf="salary.errors?.required&&salary.touched" > subject is required</span> -->
+             <span *ngIf="salary.errors?.required&&salary.touched" > subject is required</span> 
   
     
         </div>
         </div>
-        <button  class="btn btn-outline-dark mt-4 mb-4" style="margin-left: 40%"  type="submit"> Add Teacher</button>
+        <button  [disabled]="inValid()" class="btn btn-outline-dark mt-4 mb-4" style="margin-left: 40%"  type="submit"> Add Teacher</button>
      
   
   
