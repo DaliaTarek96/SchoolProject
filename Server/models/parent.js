@@ -9,6 +9,6 @@ let parentSchema= new mongoose.Schema(
       nationalId:Number,
       Address:String,
       phoneNumber:Number,
-      student_nationalId:[]
+      student_nationalId:Number
 });
 mongoose.model("parent",parentSchema);

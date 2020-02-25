@@ -93,6 +93,18 @@ sudentProRouter.route("/studentsPro")
 
         })
     })
+    sudentProRouter.get("/studentsPro/national/:id",(request, response) => {
+        studentproSchema.findOne({NationalID:request.params.id}).then((data) => {
+
+            response.send(data);
+            console.log("student get");
+        }).catch((err) => {
+
+            response.send({ err: err.errmsg });
+            console.log("student not get");
+
+        })
+    })
     
     // edit student ...
     sudentProRouter.put("/studentsPro/:id",(request, response) => {

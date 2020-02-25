@@ -10,7 +10,6 @@ import { Student } from 'src/app/_models/students/students';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  innerHeight:number = window.innerHeight-150;
   table=[];
   student:Student;
   days=['Sunday','Monday','Tuesday','Wednesday','Thursday'];

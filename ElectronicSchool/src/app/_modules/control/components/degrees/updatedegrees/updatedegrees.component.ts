@@ -12,8 +12,8 @@ export class UpdatedegreesComponent implements OnInit {
 
   student: AllStudent = new AllStudent(0, '', '', 0, []);
   // get Control Data
-  allSubjects = [[{ Subject: 'Math', min: 50, max: 100 }, { Subject: 'arabic', min: 50, max: 100 }, { Subject: 'english', min: 40, max: 80 }, { Subject: 'religion', min: 25, max: 50 }, { Subject: 'music', min: 25, max: 50 }],
-  [{ Subject: 'math', min: 50, max: 100 }, { Subject: 'arabic', min: 50, max: 100 }, { Subject: 'english', min: 40, max: 80 }, { Subject: 'religion', min: 25, max: 50 }, { Subject: 'music', min: 25, max: 50 }, { Subject: 'science', min: 40, max: 80 }, { Subject: 'history&geography', min: 40, max: 80 }]];
+  allSubjects = [[{ Subject: 'Math', min: 50, max: 100 }, { Subject: 'Arabic', min: 50, max: 100 }, { Subject: 'English', min: 40, max: 80 }, { Subject: 'Religion', min: 25, max: 50 }, { Subject: 'Music', min: 25, max: 50 }],
+  [{ Subject: 'Math', min: 50, max: 100 }, { Subject: 'Arabic', min: 50, max: 100 }, { Subject: 'English', min: 40, max: 80 }, { Subject: 'Religion', min: 25, max: 50 }, { Subject: 'Music', min: 25, max: 50 }, { Subject: 'Science', min: 40, max: 80 }, { Subject: 'History&Geography', min: 40, max: 80 }]];
 
   allSubject = [];
   saveDegrees = [];
@@ -35,7 +35,7 @@ export class UpdatedegreesComponent implements OnInit {
     });
     if (this.error.length == 0)//check if there is no error
     {
-      let editStudent = { FullName: this.student.FullName, Degree: this.saveDegrees }
+      let editStudent = { NationalID: this.student.NationalID, Degree: this.saveDegrees }
       this.ControlService.update(editStudent).subscribe(data => this.router.navigate(['/control/mainPage/showDegrees']))
    
     }
@@ -61,11 +61,13 @@ export class UpdatedegreesComponent implements OnInit {
               this.student.Degree.forEach((deg: any) => {
                 if (deg.SubjectName == this.allSubject[index].Subject) {// show if degree is registered or first time assigned
                   newDegree = deg.Degree;
+                  
                   x++;
                 }
               })
               if (x == 0) { this.saveDegrees[index] = { SubjectName: this.allSubject[index].Subject, Degree: 0 } }
-              else { this.saveDegrees[index] = { SubjectName: this.allSubject[index].Subject, Degree: newDegree }; }
+              else { this.saveDegrees[index] = { SubjectName: this.allSubject[index].Subject, Degree: newDegree };}
+              
             }
           }
         })
