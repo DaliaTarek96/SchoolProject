@@ -34,6 +34,9 @@ updateStudentData(newstd:Student,id:number){
 
 }
 
+getSpecificSTD(NationalID:number){
+  return this.http.get<Student>(this.baseUrl+"/national/"+NationalID);
+}
 
 deleteStudent(id:number){
   return this.http.delete<Student>(this.baseUrl+"/"+id);

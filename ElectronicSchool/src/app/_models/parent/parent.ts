@@ -6,7 +6,7 @@ export class Parent {
         public password?: number,
         public nationalId?: number,
         public Address?: string,
-        public phoneNumber ?: number
-
+        public phoneNumber ?: number,
+        public student_nationalId ?: number
     ) { }
 }

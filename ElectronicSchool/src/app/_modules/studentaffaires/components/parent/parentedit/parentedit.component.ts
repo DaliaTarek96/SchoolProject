@@ -11,13 +11,13 @@ import { Parent } from 'src/app/_models/parent/parent';
 export class ParenteditComponent implements OnInit {
 
 
-  EditParent: Parent = new Parent(0,"","",0,0,"",0)
+  EditParent: Parent = new Parent(0,"","",0,0,"",0,0)
 
   savaEdit() {
     this.ParentService.Update(this.EditParent).subscribe((newVlaue) => {
       console.log(newVlaue)
       console.log(this.EditParent)
-      this.Router.navigate(["studentAffaires/Student/parent"])
+      this.Router.navigate(["/studentAffaires/Student/parent"])
     })
   }
 

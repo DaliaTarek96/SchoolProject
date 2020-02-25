@@ -17,7 +17,7 @@ export class DegreeComponent implements OnInit {
   constructor(private loginServer:LoginService,private stdser:StudentsService,private control:ControlService) { }
 
   ngOnInit() {
-    //.......check state to appear result or not
+    
     this.control.getState().subscribe(state=>{
       this.state = state['state'];
     });

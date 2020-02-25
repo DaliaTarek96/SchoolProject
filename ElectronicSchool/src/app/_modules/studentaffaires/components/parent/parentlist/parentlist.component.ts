@@ -15,6 +15,7 @@ export class ParentlistComponent implements OnInit {
   constructor(private ParentService: ParentService ,private Router:Router) { }
 
   deleteParent(id:number){
+
     this.ParentService.Delete(id).subscribe((deleted)=>{
       console.log(deleted)
 
@@ -23,7 +24,7 @@ export class ParentlistComponent implements OnInit {
           this.parents.splice(i,1)
         }
       }
-    })
+    });
   }
 
   ngOnInit() {

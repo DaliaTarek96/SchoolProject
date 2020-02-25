@@ -18,6 +18,8 @@ import { MiddleheaderComponent } from './components/Header/middleheader/middlehe
 import { HomeComponent } from './components/Header/home/home.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { SharedModule } from './_modules/shared/shared.module';
+import { ErrorsComponent } from './components/errors/errors.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SharedModule } from './_modules/shared/shared.module';
     MiddleheaderComponent,
     HomeComponent,
     ContactusComponent,
+    ErrorsComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

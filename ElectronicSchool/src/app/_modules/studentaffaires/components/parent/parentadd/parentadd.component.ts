@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./parentadd.component.css']
 })
 export class ParentaddComponent implements OnInit {
+  
   loginForm: FormGroup
   constructor(
     private fb: FormBuilder,
@@ -23,12 +24,12 @@ export class ParentaddComponent implements OnInit {
         "password": ['', Validators.compose([Validators.required])],
         "nationalId": ['', Validators.compose([Validators.required])],
         "Address": ['', Validators.compose([Validators.required])],
-        "phoneNumber": ['', Validators.compose([Validators.required])]
-  
-      })
-      
+        "phoneNumber": ['', Validators.compose([Validators.required])],
+        "student_nationalId": ['', Validators.compose([Validators.required])]
+      })   
     }
     save() {
+      console.log('hi')
       console.log(this.loginForm.value)
       this.parent.addParent(this.loginForm.value).subscribe(data=>{
         console.log(data);
@@ -82,3 +83,4 @@ export class ParentaddComponent implements OnInit {
 //     })
 //   }
 // }
+

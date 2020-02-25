@@ -39,7 +39,7 @@ controlRoute.route('/AddDegrees/:id')
             })})
 controlRoute.put('/AddDegrees',(request,response)=>{
     // will edit  using national ID add degree 
-    studentSchema.updateOne({FullName:request.body.FullName},{
+    studentSchema.updateOne({NationalID:request.body.NationalID},{
         $set: {Degree:request.body.Degree}
   }).then(data=>{
     response.send(data)}).catch(err=>response.send(err));
