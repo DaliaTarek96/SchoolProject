@@ -1,0 +1,36 @@
+/* div{
+    display: inline-block;
+    margin-left: 20px
+} */
+div{
+    margin-top: 5px;
+}
+button{
+    margin-left: 50px;
+}
+/* input:first-of-type{
+    width: px;
+} */
+form{
+    width: 600px;
+    margin-top: 20px;   
+    border: 3px solid orange;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+input{
+width: 200px;
+display: inline-block
+}
