@@ -1,0 +1,35 @@
+<div class="container text-center p-5" [style.height.px]='InnerHeight'>
+    <div class="row">
+            <form [formGroup]='addNews' (ngSubmit)='save()' enctype="multipart/form-data">
+    
+                <div class="form-group">
+                    <label for="img">Insert Image :</label>
+                    <div class="preview" *ngIf="preview && preview !== null">
+                        <img [src]="preview" [alt]="addNews.value.img">
+                    </div>
+                </div>
+                <!-- File Input -->
+               <div class="form-group">
+                   <input type="file" (change)="uploadFile($event)">
+               </div>
+    
+                <!--**************************************-->
+                 <!-- Title -->
+                 <div class="form-group">
+                    <label>Title : </label> 
+                     <input class="form-control" type="text" formControlName="title" placeholder="Title">
+                </div>
+                <!--**************************************-->
+                <!-- Description -->
+                <div class="form-group input-group-lg">
+                     <input class="form-control" placeholder="Description" formControlName="description">
+                </div>
+                
+                <!--**************************************-->
+                    <input type="submit" value="Add News" class="btn btn-danger btn-block">
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
